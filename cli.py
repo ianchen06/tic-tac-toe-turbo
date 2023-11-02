@@ -49,8 +49,8 @@ if __name__ == '__main__':
         except ValueError:
             print("Invalid input, try again\n")
             continue
-        except IndexError:
-            print("You placed a mark out of bounds. Try again!\n")
+        if row > len(board) or col > len(board):
+            print("Out of bounds, try again\n")
             continue
     
         # mark the board
