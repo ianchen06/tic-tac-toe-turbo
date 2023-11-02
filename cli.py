@@ -18,7 +18,7 @@ def print_board(board):
     for row in board:
         print(row) # print will print the variable in a new line
 
-def get_player_input(current_player):
+def get_player_input(player_input):
     """
     input:
         row,col
@@ -26,8 +26,6 @@ def get_player_input(current_player):
         row: int -> the index of row
         col: int -> the index of column
     """
-    prompt = f"player {current_player} > "
-    player_input = input(prompt) # this is a str -> "1,1"
     row_col_list = player_input.split(',') # ["1", "1"]
     row, col = [int(x) for x in row_col_list] # [1,1]
     return row,col
@@ -44,8 +42,9 @@ if __name__ == '__main__':
 
     while winner is None:
         print_board(board) # print the board
+        player_input = input(f"player {current_player} > ")
         try:
-            row, col = get_player_input(current_player) # ask user input
+            row, col = get_player_input(player_input) # ask user input
         except ValueError:
             print("Invalid input, try again\n")
             continue
