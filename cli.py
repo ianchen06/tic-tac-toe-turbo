@@ -49,8 +49,13 @@ if __name__ == '__main__':
         except ValueError:
             print("Invalid input, try again\n")
             continue
+        
         if row >= len(board[0]) or col >= len(board):
             print(f"Out of bounds, try again\n")
+            continue
+
+        if board[row][col]:
+            print(f"{row},{col} already has mark {board[row][col]}, please choose another place\n")
             continue
     
         # mark the board
@@ -60,6 +65,7 @@ if __name__ == '__main__':
         winner = check_winner(board) # "O", "X" -> break out of the loop
 
         current_player = switch_player(current_player)
+        print('\n')
         # current_player = "X" if current_player == "O" else "O"
     print_board(board)
-    print(f"Winner is {current_player}")
+    print(f"Winner is {winner}")
